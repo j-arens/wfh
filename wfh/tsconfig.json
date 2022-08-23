@@ -1,0 +1,15 @@
+{
+  "extends": "@tsconfig/strictest/tsconfig.json",
+
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": true,
+    "module": "es2022",
+    "target": "ES2022"
+  },
+
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
