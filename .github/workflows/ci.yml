@@ -67,4 +67,4 @@ jobs:
          run_install: |
            - recursive: true
              args: [--frozen-lockfile]
-     - run: pnpm lint:ts && pnpm test:ts
+     - run: pnpm lint:ts && pnpm dlx playwright install && pnpm test:ts
