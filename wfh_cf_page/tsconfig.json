@@ -1,0 +1,16 @@
+{
+  "extends": "@tsconfig/strictest/tsconfig.json",
+
+  "compilerOptions": {
+    "module": "es2022",
+    "moduleResolution": "node",
+    "target": "ES2022"
+  },
+
+  "include": ["script.ts"],
+  "exclude": ["node_modules"],
+
+  "references": [
+    { "path": "../wfh" }
+  ],
+}

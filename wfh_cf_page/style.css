@@ -1,0 +1,268 @@
+:root {
+  --color-accent: 255, 255, 255;
+  --color-primary: 249, 250, 251;
+  --color-text: 17, 24, 39;
+
+  --color-error: 244, 67, 54;
+  --color-success: 76, 175, 80;
+  --color-warning: 255, 235, 59;
+
+  --color-focus-outline: #5E9ED6;
+  --color-focus-ff-outline: Highlight;
+  --color-focus-webkit-outline: -webkit-focus-ring-color;
+  --focus-outline: 2px solid var(--color-focus-webkit-outline, var(--color-focus-ff-outline, var(--color-focus-outline)));
+
+  --spacing: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-accent: 45, 51, 59;
+    --color-link: 82, 148, 249;
+    --color-link-visited: 152, 100, 220;
+    --color-text: 230, 234, 238;
+    --color-primary: 28, 33, 40;
+  }
+
+  a {
+    color: rgb(var(--color-link));
+  }
+
+  a:visited {
+    color: rgb(var(--color-link-visited));
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: rgb(var(--color-primary));
+  font-family: sans-serif;
+  color: rgb(var(--color-text));
+  padding: calc(var(--spacing) * 2);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: rgb(var(--color-text), 0.1);
+  margin: calc(var(--spacing) * 2) 0;
+}
+
+.statusBar {
+  display: flex;
+  align-items: center;
+}
+
+.statusBarIcon {
+  width: 15px;
+  height: 15px;
+}
+
+.statusBarMessage {
+  display: none;
+  margin: 0 0 0 var(--spacing);
+}
+
+html[data-status="loading"] .statusBarMessage[data-status="loading"],
+html[data-status="ready"] .statusBarMessage[data-status="ready"],
+html[data-status="processing"] .statusBarMessage[data-status="processing"],
+html[data-status="error"] .statusBarMessage[data-status="error"] {
+  display: block;
+}
+
+html[data-status="loading"] .statusBarIcon,
+html[data-status="processing"] .statusBarIcon {
+  fill: rgb(var(--color-warning));
+}
+
+html[data-status="ready"] .statusBarIcon {
+  fill: rgb(var(--color-success));
+}
+
+html[data-status="error"] .statusBarIcon {
+  fill: rgb(var(--color-error));
+}
+
+.controls {
+  max-width: 400px;
+  margin-top: calc(var(--spacing) * 2);
+}
+
+.card {
+  background-color: rgb(var(--color-accent));
+  border-radius: var(--spacing);
+  border: 1px solid rgb(var(--color-text), 0.1);
+  padding: var(--spacing);
+}
+
+.fileInput,
+.fileInfo {
+  align-self: center;
+  height: 35vh;
+}
+
+.fileInput {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.fileInput input,
+.fileInputDisplay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.fileInput input {
+  height: 150%;
+  top: -50%;
+  left: 0;
+  cursor: pointer;
+}
+
+html[data-status="loading"] .fileInput input,
+html[data-status="processing"] .fileInput input {
+  cursor: wait;
+}
+
+.fileInput input[disabled] {
+  cursor: auto;
+}
+
+.fileInputDisplay {
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(var(--color-accent));
+}
+
+.fileInput input:focus-visible + .fileInputDisplay,
+.fileInput input:focus:not(:focus-visible) + .fileInputDisplay {
+  outline: var(--focus-outline);
+  outline-offset: -2px;
+}
+
+.fileInputIcon,
+.fileIntoEmptyIcon {
+  fill: rgb(var(--color-text));
+  width: 40px;
+  height: 40px;
+}
+
+.fileInfo {
+  position: relative;
+  margin: calc(var(--spacing) * 2) 0 0 0;
+  overflow-y: auto;
+}
+
+.fileInfoEmpty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.fileInfoEmpty[data-hidden="true"] {
+  display: none;
+}
+
+.fileInfoList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fileInfoListItem {
+  padding: var(--spacing);
+  border-radius: var(--spacing);
+}
+
+.fileInfoListItem:nth-of-type(odd) {
+  background-color: rgb(var(--color-text), 0.05);
+}
+
+.fileInfoListItem:nth-of-type(even) {
+  background-color: rgb(var(--color-primary));
+}
+
+.fileInfoListItem + .fileInfoListItem {
+  margin-top: var(--spacing);
+}
+
+.fileIntoTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.fileIntoTable caption {
+  text-align: left;
+  margin-bottom: var(--spacing);
+  font-weight: bold;
+}
+
+.fileIntoTable td,
+.fileIntoTable th {
+  padding: var(--spacing);
+  border: 1px solid rgb(var(--color-text), 0.1);
+  text-align: left;
+}
+
+.footer {
+  padding-bottom: calc(var(--spacing) * 4);
+}
+
+@media screen and (min-width: 990px) {
+  .controls {
+    max-width: 100%;
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: calc(50% - var(--spacing)) calc(50% - var(--spacing));
+    gap: calc(var(--spacing) * 2);
+  }
+
+  .fileInput,
+  .fileInfo {
+    height: 400px;
+  }
+
+  .fileInfo {
+    margin: 0;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 250ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

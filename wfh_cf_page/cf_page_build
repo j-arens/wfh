@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo
+echo "==> running rustup"
+echo
+
+# Download and run the rustup-init.sh script:
+# `-y` to disable the confirmation prompt
+# `-t wasm32-unknown-unknown` to install the `wasm32-unknown-unknown` target
+curl https://sh.rustup.rs -sSf | sh -s -- -y -t wasm32-unknown-unknown
+source $HOME/.cargo/env
+cargo -V
+rustc --print target-list
+
+echo
+echo "==> installing pnpm"
+echo
+
+# @TODO: node version 16.17.0, https://developers.cloudflare.com/pages/platform/build-configuration/#language-support-and-tools, and set NODE_ENV=production
+node --version
+npm install -g pnpm@7
+pnpm --version
+
+echo
+echo "==> running build"
+echo
+
+# Install deps, build the site and copy WFH wasm into the dist directory.
+pnpm install --frozen-lockfile
+pnpm build
+cp ./wfh_wasm.wasm ./dist/wfh_wasm.wasm

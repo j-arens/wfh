@@ -1,0 +1,20 @@
+{
+  "name": "wfh_cf_page",
+  "version": "1.0.0",
+  "description": "Example web page showcasing the wfh package.",
+  "scripts": {
+    "build": "pnpm build:prepare && vite build",
+    "build:prepare": "pnpm --filter ../wfh build && cp ../target/wasm32-unknown-unknown/release-wasm/wfh_wasm.wasm ./wfh_wasm.wasm",
+    "dev": "pnpm build:prepare && vite",
+    "lint": "eslint"
+  },
+  "author": "Josh Arens",
+  "license": "MIT",
+  "dependencies": {
+    "pretty-bytes": "6.0.0",
+    "wfh": "workspace:^"
+  },
+  "devDependencies": {
+    "vite": "3.0.2"
+  }
+}
