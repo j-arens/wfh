@@ -1,0 +1,19 @@
+# JavaScript
+node_modules
+dist
+
+# TypeScript
+tsconfig.tsbuildinfo
+
+# Rust
+target
+debug
+**/*.rs.bk
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Dev Artifacts
+wfh_cf_page/wfh_wasm.wasm
