@@ -58,6 +58,7 @@ jobs:
          node-version: '16.x'
      - uses: pnpm/action-setup@v2.2.2
        with:
+         version: 7
          run_install: |
            - recursive: true
              args: [--frozen-lockfile]
