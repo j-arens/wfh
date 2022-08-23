@@ -1,0 +1,25 @@
+{
+  "private": "true",
+  "workspaces": [ "wfh", "wfh_cf_page" ],
+  "engines": {
+    "node": "^16",
+    "pnpm": "^7"
+  },
+  "scripts": {
+    "dev": "pnpm --filter wfh_cf_page dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm lint:rs && pnpm lint:ts",
+    "lint:rs": "cargo check && cargo clippy",
+    "lint:ts": "pnpm -r lint",
+    "test": "pnpm test:rs && pnpm test:ts",
+    "test:rs": "cargo test",
+    "test:ts": "pnpm -r test"
+  },
+  "devDependencies": {
+    "@tsconfig/strictest": "1.0.1",
+    "@typescript-eslint/eslint-plugin": "5.34.0",
+    "@typescript-eslint/parser": "5.34.0",
+    "eslint": "8.22.0",
+    "typescript": "4.7.4"
+  }
+}
