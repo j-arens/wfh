@@ -57,7 +57,6 @@ jobs:
        with:
          toolchain: stable
          target: wasm32-unknown-unknown
-     - uses: actions-rs/cargo@v1
      - uses: actions/setup-node@v3
        with:
          node-version: '16.x'

@@ -10,7 +10,7 @@
     "build:types": "tsc",
     "build:wasm": "cargo build --manifest-path=../wfh_wasm/Cargo.toml --target=wasm32-unknown-unknown --profile=release-wasm",
     "lint": "eslint",
-    "test": "pnpm build:wasm && tests/run"
+    "test": "pnpm build:wasm && node tests/run.js"
   },
   "keywords": [
     "md5",
