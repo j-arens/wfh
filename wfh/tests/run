@@ -3,7 +3,7 @@
 set -e
 
 # Kill the following vite process on exit or error
-trap "kill 0" EXIT INT TERM ERR
+trap "kill -2 0" EXIT INT TERM ERR
 
 # Start vite, serve tests/index.html at localhost:7474
 pnpm vite tests --mode=production --port=7474 --strictPort &
