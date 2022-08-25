@@ -18,7 +18,6 @@ echo
 echo "==> installing pnpm"
 echo
 
-# @TODO: node version 16.17.0, https://developers.cloudflare.com/pages/platform/build-configuration/#language-support-and-tools, and set NODE_ENV=production
 node --version
 npm install -g pnpm@7
 pnpm --version
