@@ -48,8 +48,24 @@ jobs:
           command: clippy
           args: -- -D warnings
 
-  typescript-lint-and-test:
-    name: Lint and test TypeScript packages
+  typescript-lint:
+    name: Lint TypeScript packages
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v2
+     - uses: actions/setup-node@v3
+       with:
+         node-version: '16.x'
+     - uses: pnpm/action-setup@v2.2.2
+       with:
+         version: 7
+         run_install: |
+           - recursive: true
+             args: [--frozen-lockfile]
+     - run: pnpm lint:ts
+
+  typescript-test:
+    name: Test TypeScript packages
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v3
@@ -66,4 +82,4 @@ jobs:
          run_install: |
            - recursive: true
              args: [--frozen-lockfile]
-     - run: pnpm lint:ts && pnpm dlx playwright install && pnpm test:ts
+     - run: pnpm dlx playwright install && pnpm test:ts
