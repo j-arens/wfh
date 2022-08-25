@@ -28,5 +28,6 @@ echo
 
 # Install deps, build the site and copy WFH wasm into the dist directory.
 pnpm install --frozen-lockfile
+
 pnpm build
-cp ./wfh_wasm.wasm ./dist/wfh_wasm.wasm
+cp ./wfh_cf_page/wfh_wasm.wasm ./wfh_cf_page/dist/wfh_wasm.wasm
