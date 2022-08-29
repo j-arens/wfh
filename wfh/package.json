@@ -2,6 +2,7 @@
   "name": "wfh",
   "version": "1.0.0",
   "description": "wfh - web file hasher, a WebAssembly powered MD5 file hasher for web browsers.",
+  "packageManager": "pnpm@7.5.0",
   "type": "module",
   "main": "./dist/wfh.js",
   "types": "./dist/src/index.d.ts",

@@ -18,7 +18,6 @@ echo
 echo "==> installing pnpm"
 echo
 
-# @TODO: node version 16.17.0, https://developers.cloudflare.com/pages/platform/build-configuration/#language-support-and-tools, and set NODE_ENV=production
 node --version
 npm install -g pnpm@7
 pnpm --version
@@ -29,5 +28,6 @@ echo
 
 # Install deps, build the site and copy WFH wasm into the dist directory.
 pnpm install --frozen-lockfile
+
 pnpm build
-cp ./wfh_wasm.wasm ./dist/wfh_wasm.wasm
+cp ./wfh_cf_page/wfh_wasm.wasm ./wfh_cf_page/dist/wfh_wasm.wasm
